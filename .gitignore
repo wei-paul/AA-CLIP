@@ -11,8 +11,11 @@ rebuttal/
 sup/
 visualize/
 */*.pt
-
+.claude/
 *.npy
+
+# Ignore dataset images (too large for git)
+data/
 
 # 忽略所有__pycache__目录
 __pycache__/
