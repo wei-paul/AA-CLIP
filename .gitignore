@@ -13,7 +13,7 @@ visualize/
 */*.pt
 .claude/
 *.npy
-
+docs/
 
 # Ignore dataset images (too large for git)
 data/

@@ -471,8 +471,15 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
         # Stack: [B, 1232, 768]
         text_context = torch.stack(text_contexts, dim=0)
 
+        # FIX: Normalize text_context to prevent huge cross-attention output
+        # This matches the normalization done for image_context in Stage 1
+        # Without this, text_context has norm ~17 per token, causing
+        # cross-attention output to be 25000x larger than in Stage 1
+        text_context = F.normalize(text_context, dim=-1)
+
         if debug:
             print(f"  text_context shape: {text_context.shape}")
+            print(f"  text_context norm (per token): {text_context.norm(dim=-1).mean().item():.4f}")
 
         self.current_text_context = text_context
         return text_context
@@ -532,11 +539,20 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
                     self.current_image_context,
                     debug=(debug or self.debug_cross_attn)
                 )
-                # FIX: Scale cross-attention output like adapters (0.1 weight)
-                cross_out_scaled = self.t_ca_w * cross_out
+
+                # FIX: Norm-match cross-attention output to input (like adapters do)
+                # This ensures consistent magnitude across both stages
+                cross_out_norm = cross_out.norm(dim=-1, keepdim=True)
+                x_attn_norm = x_attn.norm(dim=-1, keepdim=True)
+                cross_out_normalized = cross_out * x_attn_norm / (cross_out_norm + 1e-6)
+
+                # Apply residual with scaling weight
+                cross_out_scaled = self.t_ca_w * cross_out_normalized
                 x = x + cross_out_scaled.permute(1, 0, 2)  # Scaled residual
 
                 if debug or self.debug_cross_attn:
+                    print(f"    cross_out norm before: {cross_out.norm(dim=-1).mean().item():.4f}")
+                    print(f"    cross_out norm after: {cross_out_normalized.norm(dim=-1).mean().item():.4f}")
                     print(f">>> CROSS-ATTENTION COMPLETE <<<\n")
 
             # Apply text adapter
@@ -661,12 +677,21 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
                     self.current_text_context,
                     debug=(debug or self.debug_cross_attn)
                 )
-                # FIX: Scale cross-attention output like adapters (0.1 weight)
-                # This prevents cross-attention from absorbing all gradients!
-                cross_out_scaled = self.i_ca_w * cross_out
+
+                # FIX: Norm-match cross-attention output to input (like adapters do)
+                # This ensures the cross-attention contribution has similar magnitude
+                # to the input features, preventing training instability
+                cross_out_norm = cross_out.norm(dim=-1, keepdim=True)
+                x_attn_norm = x_attn.norm(dim=-1, keepdim=True)
+                cross_out_normalized = cross_out * x_attn_norm / (cross_out_norm + 1e-6)
+
+                # Apply residual with scaling weight
+                cross_out_scaled = self.i_ca_w * cross_out_normalized
                 x = x + cross_out_scaled.permute(1, 0, 2)  # Scaled residual
 
                 if debug or self.debug_cross_attn:
+                    print(f"    cross_out norm before: {cross_out.norm(dim=-1).mean().item():.4f}")
+                    print(f"    cross_out norm after: {cross_out_normalized.norm(dim=-1).mean().item():.4f}")
                     print(f">>> CROSS-ATTENTION COMPLETE <<<\n")
 
             # Apply image adapter
