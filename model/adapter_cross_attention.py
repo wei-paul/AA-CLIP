@@ -329,6 +329,8 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
         relu: bool = True,
         cross_attn_heads: int = 8,
         cross_attn_dropout: float = 0.1,
+        text_cross_attn_weight: float = 0.1,  # NEW: Scale for text cross-attention
+        image_cross_attn_weight: float = 0.1,  # NEW: Scale for image cross-attention
         **kwargs,
     ):
         super().__init__()
@@ -338,6 +340,8 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
         self.image_adapt_until = image_adapt_until
         self.t_w = text_adapt_weight
         self.i_w = image_adapt_weight
+        self.t_ca_w = text_cross_attn_weight  # NEW: Weight for text cross-attention
+        self.i_ca_w = image_cross_attn_weight  # NEW: Weight for image cross-attention
         self.levels = levels
 
         # Image adapters (same as original)
@@ -520,6 +524,7 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
             if i == 0 and self.current_image_context is not None:
                 if debug or self.debug_cross_attn:
                     print(f"\n>>> STAGE 1 CROSS-ATTENTION (text→image) <<<")
+                    print(f"    Scaling factor: {self.t_ca_w}")
 
                 x_attn = x.permute(1, 0, 2)  # [B, 77, 768]
                 cross_out = self.text_cross_attn(
@@ -527,7 +532,9 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
                     self.current_image_context,
                     debug=(debug or self.debug_cross_attn)
                 )
-                x = x + cross_out.permute(1, 0, 2)  # Residual
+                # FIX: Scale cross-attention output like adapters (0.1 weight)
+                cross_out_scaled = self.t_ca_w * cross_out
+                x = x + cross_out_scaled.permute(1, 0, 2)  # Scaled residual
 
                 if debug or self.debug_cross_attn:
                     print(f">>> CROSS-ATTENTION COMPLETE <<<\n")
@@ -646,6 +653,7 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
             if i == 0 and use_cross_attention and self.current_text_context is not None:
                 if debug or self.debug_cross_attn:
                     print(f"\n>>> STAGE 2 CROSS-ATTENTION (image→text) <<<")
+                    print(f"    Scaling factor: {self.i_ca_w}")
 
                 x_attn = x.permute(1, 0, 2)  # [B, 1370, 1024]
                 cross_out = self.image_cross_attn(
@@ -653,7 +661,10 @@ class AdaptedCLIPWithCrossAttention(nn.Module):
                     self.current_text_context,
                     debug=(debug or self.debug_cross_attn)
                 )
-                x = x + cross_out.permute(1, 0, 2)  # Residual
+                # FIX: Scale cross-attention output like adapters (0.1 weight)
+                # This prevents cross-attention from absorbing all gradients!
+                cross_out_scaled = self.i_ca_w * cross_out
+                x = x + cross_out_scaled.permute(1, 0, 2)  # Scaled residual
 
                 if debug or self.debug_cross_attn:
                     print(f">>> CROSS-ATTENTION COMPLETE <<<\n")
