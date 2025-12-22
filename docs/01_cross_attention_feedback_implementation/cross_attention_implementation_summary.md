@@ -180,25 +180,55 @@ This allows direct comparison between original and cross-attention versions.
 
 ---
 
+## IMPORTANT: Normalization Required
+
+**⚠️ CRITICAL:** The cross-attention implementation requires proper normalization to work correctly!
+
+### Two Required Fixes (Already Implemented)
+
+1. **Normalize `text_context`** in Stage 2:
+   ```python
+   text_context = F.normalize(text_context, dim=-1)
+   ```
+   Without this, `text_context` has norm ~17 per token, causing outputs 25,000x larger than Stage 1.
+
+2. **Norm-match cross-attention outputs** before residual addition:
+   ```python
+   cross_out_norm = cross_out.norm(dim=-1, keepdim=True)
+   x_attn_norm = x_attn.norm(dim=-1, keepdim=True)
+   cross_out_normalized = cross_out * x_attn_norm / (cross_out_norm + 1e-6)
+   cross_out_scaled = self.ca_w * cross_out_normalized  # Then scale
+   ```
+   This ensures the cross-attention contribution has similar magnitude to input features.
+
+**See:** [STAGE2_CROSS_ATTENTION_NORMALIZATION_FIX.md](../../04_bug_fixes/STAGE2_CROSS_ATTENTION_NORMALIZATION_FIX.md)
+
+---
+
 ## Expected Improvements
 
 ### What Cross-Attention Enables
 
-1. **Vision-Aware Text Embeddings**
+1. **Vision-Aware Text Embeddings (Stage 1)**
    - Text tokens can "see" what's in the image
    - "damaged bottle" produces different embeddings based on actual damage patterns present
 
-2. **Spatial Grounding**
-   - Text like "bottle neck" can attend to neck-region patches
-   - Text like "damaged" can attend to anomaly-containing patches
+2. **Text-Aware Image Features (Stage 2)**
+   - Image patches can "understand" which text concepts to focus on
+   - Helps distinguish normal vs abnormal patterns
 
-3. **Better Text-Image Alignment**
-   - Normal vs abnormal text embeddings become more discriminative
-   - Text learns to focus on relevant visual features
+3. **Spatial Grounding**
+   - Text like "bottle neck" can attend to neck-region patches (Stage 1)
+   - Image patches can attend to relevant text tokens (Stage 2)
 
-4. **Improved Anomaly Localization**
-   - Text embeddings understand spatial structure
-   - Can better guide segmentation in downstream tasks
+4. **Better Text-Image Alignment**
+   - Normal vs abnormal embeddings become more discriminative
+   - Both modalities learn to focus on relevant features
+
+5. **Improved Anomaly Localization**
+   - Text embeddings understand spatial structure (Stage 1)
+   - Image features understand semantic concepts (Stage 2)
+   - Better guidance for segmentation in downstream tasks
 
 ---
 

@@ -1,8 +1,15 @@
-# CRITICAL BUG FIXED: Stage 2 Gradient Dilution
+# OUTDATED: Stage 2 Gradient Dilution Fix (Partial Fix)
 
-## Problem Summary
+**⚠️ This document describes a PARTIAL fix that has been SUPERSEDED.**
+**✅ See [STAGE2_CROSS_ATTENTION_NORMALIZATION_FIX.md](STAGE2_CROSS_ATTENTION_NORMALIZATION_FIX.md) for the COMPLETE fix.**
+
+---
+
+## Problem Summary (Partial Understanding)
 
 Your feedback training was failing because **cross-attention absorbed 63% of the gradients**, leaving only 37% for the image adapter. This prevented the adapter from learning.
+
+**Note:** This was the correct diagnosis of the symptom, but the root cause was actually **unnormalized text_context and missing norm-matching**, not just gradient absorption. The scaling weights added here helped but didn't fully solve the problem.
 
 ## Evidence
 

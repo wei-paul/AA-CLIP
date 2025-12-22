@@ -560,9 +560,11 @@ def main():
         relu=args.relu,
         cross_attn_heads=args.cross_attn_heads,
         cross_attn_dropout=args.cross_attn_dropout,
+        text_cross_attn_weight=0.1,  # FIX: Scale cross-attention like adapters
+        image_cross_attn_weight=0.1,  # FIX: Prevents gradient dilution in Stage 2!
     ).to(device)
     model.eval()
-    print("  AdaptedCLIPWithCrossAttention loaded")
+    print("  AdaptedCLIPWithCrossAttention loaded (with normalization fix)")
 
     # Count parameters
     text_adapter_params = sum(p.numel() for p in model.text_adapter.parameters())

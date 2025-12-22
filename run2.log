@@ -1,0 +1,1843 @@
+
+Loop 1 Epoch 3:  70%|████████████████████████████████████████████▊                   | 757/1081 [07:38<03:14,  1.67it/s]
+============================================================
+BATCH 4000 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb2', 'pcb1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb2', 'pcb1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 91.1419
+    cross_out norm after: 13.0845
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.712048
+  seg_loss: 1.460502
+  total: 2.172550
+
+[GRADIENTS]
+  image_adapter[0]: 0.096202
+  image_adapter[1]: 0.084272
+  image_adapter[2]: 0.089727
+  image_adapter[3]: 0.095778
+  image_adapter[4]: 0.098103
+  image_adapter[5]: 0.099151
+  image_cross_attn.q_proj.weight: 0.001293
+  image_cross_attn.q_proj.bias: 0.000087
+  image_cross_attn.k_proj.weight: 0.000430
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.003324
+  image_cross_attn.v_proj.bias: 0.003002
+  image_cross_attn.out_proj.weight: 0.021622
+  image_cross_attn.out_proj.bias: 0.003039
+============================================================
+
+Loop 1 Epoch 3:  79%|██████████████████████████████████████████████████▋             | 857/1081 [08:38<02:16,  1.64it/s]
+============================================================
+BATCH 4100 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni1', 'capsules']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni1', 'capsules']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 101.6157
+    cross_out norm after: 10.6585
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.656588
+  seg_loss: 0.114043
+  total: 0.770632
+
+[GRADIENTS]
+  image_adapter[0]: 0.455353
+  image_adapter[1]: 0.430358
+  image_adapter[2]: 0.543450
+  image_adapter[3]: 0.503856
+  image_adapter[4]: 0.509883
+  image_adapter[5]: 0.515537
+  image_cross_attn.q_proj.weight: 0.002239
+  image_cross_attn.q_proj.bias: 0.000191
+  image_cross_attn.k_proj.weight: 0.001728
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.020255
+  image_cross_attn.v_proj.bias: 0.021003
+  image_cross_attn.out_proj.weight: 0.152733
+  image_cross_attn.out_proj.bias: 0.022482
+============================================================
+
+Loop 1 Epoch 3:  89%|████████████████████████████████████████████████████████▋       | 957/1081 [09:39<01:15,  1.63it/s]
+============================================================
+BATCH 4200 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pipe_fryum', 'pcb1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pipe_fryum', 'pcb1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 99.3641
+    cross_out norm after: 8.1500
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.587126
+  seg_loss: 1.481029
+  total: 2.068156
+
+[GRADIENTS]
+  image_adapter[0]: 0.126681
+  image_adapter[1]: 0.110576
+  image_adapter[2]: 0.114953
+  image_adapter[3]: 0.133901
+  image_adapter[4]: 0.126237
+  image_adapter[5]: 0.137850
+  image_cross_attn.q_proj.weight: 0.002442
+  image_cross_attn.q_proj.bias: 0.000210
+  image_cross_attn.k_proj.weight: 0.000370
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.003691
+  image_cross_attn.v_proj.bias: 0.003273
+  image_cross_attn.out_proj.weight: 0.021261
+  image_cross_attn.out_proj.bias: 0.002862
+============================================================
+
+Loop 1 Epoch 3:  98%|█████████████████████████████████████████████████████████████▌ | 1057/1081 [10:40<00:14,  1.67it/s]
+============================================================
+BATCH 4300 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['fryum', 'pcb4']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['fryum', 'pcb4']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 102.5014
+    cross_out norm after: 6.8373
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.561427
+  seg_loss: 2.613487
+  total: 3.174913
+
+[GRADIENTS]
+  image_adapter[0]: 0.154800
+  image_adapter[1]: 0.134635
+  image_adapter[2]: 0.162049
+  image_adapter[3]: 0.173609
+  image_adapter[4]: 0.173915
+  image_adapter[5]: 0.198586
+  image_cross_attn.q_proj.weight: 0.001172
+  image_cross_attn.q_proj.bias: 0.000065
+  image_cross_attn.k_proj.weight: 0.000608
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.004075
+  image_cross_attn.v_proj.bias: 0.004247
+  image_cross_attn.out_proj.weight: 0.026326
+  image_cross_attn.out_proj.bias: 0.003787
+============================================================
+
+Loop 1 Epoch 3: 100%|███████████████████████████████████████████████████████████████| 1081/1081 [10:55<00:00,  1.65it/s]
+
+Loop 1 Epoch 3 Complete - Average Loss: 2.271241
+Checkpoint saved: ckpt/visa_cross_attn_feedback_fixed1219/loop_1_image_adapter.pth
+
+======================================================================
+LOOP 1 | EPOCH 4/19 - STAGE 2: IMAGE CROSS-ATTENTION
+======================================================================
+Loop 1 Epoch 4:   7%|████▌                                                            | 76/1081 [00:46<09:59,  1.68it/s]
+============================================================
+BATCH 4400 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni1', 'capsules']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni1', 'capsules']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 106.1885
+    cross_out norm after: 9.8552
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.549468
+  seg_loss: 1.338172
+  total: 1.887639
+
+[GRADIENTS]
+  image_adapter[0]: 0.061997
+  image_adapter[1]: 0.048934
+  image_adapter[2]: 0.056795
+  image_adapter[3]: 0.069820
+  image_adapter[4]: 0.071841
+  image_adapter[5]: 0.079116
+  image_cross_attn.q_proj.weight: 0.000249
+  image_cross_attn.q_proj.bias: 0.000010
+  image_cross_attn.k_proj.weight: 0.000121
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001480
+  image_cross_attn.v_proj.bias: 0.001539
+  image_cross_attn.out_proj.weight: 0.011018
+  image_cross_attn.out_proj.bias: 0.001558
+============================================================
+
+Loop 1 Epoch 4:  16%|██████████▍                                                     | 176/1081 [01:46<08:59,  1.68it/s]
+============================================================
+BATCH 4500 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb3', 'candle']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb3', 'candle']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 107.3864
+    cross_out norm after: 7.9594
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.679564
+  seg_loss: 2.918857
+  total: 3.598421
+
+[GRADIENTS]
+  image_adapter[0]: 0.063067
+  image_adapter[1]: 0.058189
+  image_adapter[2]: 0.065992
+  image_adapter[3]: 0.066983
+  image_adapter[4]: 0.064106
+  image_adapter[5]: 0.063517
+  image_cross_attn.q_proj.weight: 0.001003
+  image_cross_attn.q_proj.bias: 0.000056
+  image_cross_attn.k_proj.weight: 0.000114
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001717
+  image_cross_attn.v_proj.bias: 0.001748
+  image_cross_attn.out_proj.weight: 0.011703
+  image_cross_attn.out_proj.bias: 0.001552
+============================================================
+
+Loop 1 Epoch 4:  26%|████████████████▎                                               | 276/1081 [02:47<08:08,  1.65it/s]
+============================================================
+BATCH 4600 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni1', 'pcb3']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni1', 'pcb3']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 106.5554
+    cross_out norm after: 10.5573
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.577786
+  seg_loss: 1.985610
+  total: 2.563396
+
+[GRADIENTS]
+  image_adapter[0]: 0.327372
+  image_adapter[1]: 0.295141
+  image_adapter[2]: 0.316380
+  image_adapter[3]: 0.326318
+  image_adapter[4]: 0.314296
+  image_adapter[5]: 0.308811
+  image_cross_attn.q_proj.weight: 0.006478
+  image_cross_attn.q_proj.bias: 0.000829
+  image_cross_attn.k_proj.weight: 0.001130
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.015605
+  image_cross_attn.v_proj.bias: 0.015304
+  image_cross_attn.out_proj.weight: 0.106442
+  image_cross_attn.out_proj.bias: 0.014988
+============================================================
+
+Loop 1 Epoch 4:  35%|██████████████████████▎                                         | 376/1081 [03:48<07:08,  1.65it/s]
+============================================================
+BATCH 4700 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni1', 'capsules']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni1', 'capsules']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 109.0769
+    cross_out norm after: 10.3272
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.588698
+  seg_loss: 0.896230
+  total: 1.484928
+
+[GRADIENTS]
+  image_adapter[0]: 0.116456
+  image_adapter[1]: 0.096126
+  image_adapter[2]: 0.107240
+  image_adapter[3]: 0.125831
+  image_adapter[4]: 0.122095
+  image_adapter[5]: 0.132403
+  image_cross_attn.q_proj.weight: 0.001371
+  image_cross_attn.q_proj.bias: 0.000136
+  image_cross_attn.k_proj.weight: 0.000436
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.002507
+  image_cross_attn.v_proj.bias: 0.002489
+  image_cross_attn.out_proj.weight: 0.017664
+  image_cross_attn.out_proj.bias: 0.002388
+============================================================
+
+Loop 1 Epoch 4:  44%|████████████████████████████▏                                   | 476/1081 [04:49<06:02,  1.67it/s]
+============================================================
+BATCH 4800 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb2', 'pcb3']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb2', 'pcb3']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 111.4738
+    cross_out norm after: 9.2210
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.598836
+  seg_loss: 2.377525
+  total: 2.976361
+
+[GRADIENTS]
+  image_adapter[0]: 0.093904
+  image_adapter[1]: 0.070784
+  image_adapter[2]: 0.080729
+  image_adapter[3]: 0.080680
+  image_adapter[4]: 0.075111
+  image_adapter[5]: 0.072735
+  image_cross_attn.q_proj.weight: 0.001387
+  image_cross_attn.q_proj.bias: 0.000021
+  image_cross_attn.k_proj.weight: 0.000288
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001980
+  image_cross_attn.v_proj.bias: 0.001902
+  image_cross_attn.out_proj.weight: 0.015016
+  image_cross_attn.out_proj.bias: 0.002025
+============================================================
+
+Loop 1 Epoch 4:  53%|██████████████████████████████████                              | 576/1081 [05:49<05:08,  1.64it/s]
+============================================================
+BATCH 4900 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb3', 'candle']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb3', 'candle']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 116.2651
+    cross_out norm after: 9.5134
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.658040
+  seg_loss: 2.036448
+  total: 2.694488
+
+[GRADIENTS]
+  image_adapter[0]: 0.089861
+  image_adapter[1]: 0.082120
+  image_adapter[2]: 0.090146
+  image_adapter[3]: 0.088876
+  image_adapter[4]: 0.082739
+  image_adapter[5]: 0.081987
+  image_cross_attn.q_proj.weight: 0.000813
+  image_cross_attn.q_proj.bias: 0.000084
+  image_cross_attn.k_proj.weight: 0.000502
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.003370
+  image_cross_attn.v_proj.bias: 0.003702
+  image_cross_attn.out_proj.weight: 0.025139
+  image_cross_attn.out_proj.bias: 0.003616
+============================================================
+
+Loop 1 Epoch 4:  63%|████████████████████████████████████████                        | 676/1081 [06:50<04:02,  1.67it/s]
+============================================================
+BATCH 5000 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb4', 'pcb4']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb4', 'pcb4']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 114.7610
+    cross_out norm after: 8.1982
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.460182
+  seg_loss: 1.108834
+  total: 1.569016
+
+[GRADIENTS]
+  image_adapter[0]: 0.059784
+  image_adapter[1]: 0.057513
+  image_adapter[2]: 0.058751
+  image_adapter[3]: 0.063835
+  image_adapter[4]: 0.060300
+  image_adapter[5]: 0.061699
+  image_cross_attn.q_proj.weight: 0.001465
+  image_cross_attn.q_proj.bias: 0.000188
+  image_cross_attn.k_proj.weight: 0.000158
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001684
+  image_cross_attn.v_proj.bias: 0.001368
+  image_cross_attn.out_proj.weight: 0.011443
+  image_cross_attn.out_proj.bias: 0.001475
+============================================================
+
+Loop 1 Epoch 4:  72%|█████████████████████████████████████████████▉                  | 776/1081 [07:50<03:06,  1.64it/s]
+============================================================
+BATCH 5100 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb3', 'pcb1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb3', 'pcb1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 114.8244
+    cross_out norm after: 10.4675
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.523681
+  seg_loss: 0.000310
+  total: 0.523991
+
+[GRADIENTS]
+  image_adapter[0]: 0.034752
+  image_adapter[1]: 0.028545
+  image_adapter[2]: 0.030342
+  image_adapter[3]: 0.031892
+  image_adapter[4]: 0.030552
+  image_adapter[5]: 0.030505
+  image_cross_attn.q_proj.weight: 0.000817
+  image_cross_attn.q_proj.bias: 0.000087
+  image_cross_attn.k_proj.weight: 0.000192
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001078
+  image_cross_attn.v_proj.bias: 0.000855
+  image_cross_attn.out_proj.weight: 0.006804
+  image_cross_attn.out_proj.bias: 0.000874
+============================================================
+
+Loop 1 Epoch 4:  81%|███████████████████████████████████████████████████▊            | 876/1081 [08:51<02:04,  1.64it/s]
+============================================================
+BATCH 5200 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb3', 'pcb1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb3', 'pcb1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 122.1648
+    cross_out norm after: 9.8670
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.684696
+  seg_loss: 3.652596
+  total: 4.337292
+
+[GRADIENTS]
+  image_adapter[0]: 0.070677
+  image_adapter[1]: 0.067116
+  image_adapter[2]: 0.075709
+  image_adapter[3]: 0.075763
+  image_adapter[4]: 0.074853
+  image_adapter[5]: 0.074475
+  image_cross_attn.q_proj.weight: 0.001450
+  image_cross_attn.q_proj.bias: 0.000163
+  image_cross_attn.k_proj.weight: 0.000702
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.002549
+  image_cross_attn.v_proj.bias: 0.002686
+  image_cross_attn.out_proj.weight: 0.016726
+  image_cross_attn.out_proj.bias: 0.002091
+============================================================
+
+Loop 1 Epoch 4:  90%|█████████████████████████████████████████████████████████▊      | 976/1081 [09:51<01:02,  1.68it/s]
+============================================================
+BATCH 5300 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb1', 'macaroni1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb1', 'macaroni1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 128.7757
+    cross_out norm after: 10.6161
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.596942
+  seg_loss: 0.000008
+  total: 0.596950
+
+[GRADIENTS]
+  image_adapter[0]: 0.054531
+  image_adapter[1]: 0.044368
+  image_adapter[2]: 0.046351
+  image_adapter[3]: 0.045191
+  image_adapter[4]: 0.042642
+  image_adapter[5]: 0.042703
+  image_cross_attn.q_proj.weight: 0.001217
+  image_cross_attn.q_proj.bias: 0.000090
+  image_cross_attn.k_proj.weight: 0.000484
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001579
+  image_cross_attn.v_proj.bias: 0.001505
+  image_cross_attn.out_proj.weight: 0.010351
+  image_cross_attn.out_proj.bias: 0.001269
+============================================================
+
+Loop 1 Epoch 4: 100%|██████████████████████████████████████████████████████████████▋| 1076/1081 [10:51<00:03,  1.66it/s]
+============================================================
+BATCH 5400 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni2', 'chewinggum']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni2', 'chewinggum']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 133.8163
+    cross_out norm after: 7.6610
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.488287
+  seg_loss: 1.359483
+  total: 1.847769
+
+[GRADIENTS]
+  image_adapter[0]: 0.076832
+  image_adapter[1]: 0.070251
+  image_adapter[2]: 0.082956
+  image_adapter[3]: 0.084848
+  image_adapter[4]: 0.083731
+  image_adapter[5]: 0.084289
+  image_cross_attn.q_proj.weight: 0.000753
+  image_cross_attn.q_proj.bias: 0.000058
+  image_cross_attn.k_proj.weight: 0.000187
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.002074
+  image_cross_attn.v_proj.bias: 0.002178
+  image_cross_attn.out_proj.weight: 0.014901
+  image_cross_attn.out_proj.bias: 0.001875
+============================================================
+
+Loop 1 Epoch 4: 100%|███████████████████████████████████████████████████████████████| 1081/1081 [10:55<00:00,  1.65it/s]
+
+Loop 1 Epoch 4 Complete - Average Loss: 2.250747
+Checkpoint saved: ckpt/visa_cross_attn_feedback_fixed1219/loop_1_image_adapter.pth
+
+======================================================================
+LOOP 1 | EPOCH 5/19 - STAGE 2: IMAGE CROSS-ATTENTION
+======================================================================
+Loop 1 Epoch 5:   9%|█████▋                                                           | 95/1081 [00:58<10:03,  1.63it/s]
+============================================================
+BATCH 5500 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['fryum', 'pcb3']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['fryum', 'pcb3']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 126.7009
+    cross_out norm after: 9.3238
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.735326
+  seg_loss: 2.376038
+  total: 3.111364
+
+[GRADIENTS]
+  image_adapter[0]: 0.046028
+  image_adapter[1]: 0.043775
+  image_adapter[2]: 0.049868
+  image_adapter[3]: 0.052980
+  image_adapter[4]: 0.048901
+  image_adapter[5]: 0.048684
+  image_cross_attn.q_proj.weight: 0.000915
+  image_cross_attn.q_proj.bias: 0.000102
+  image_cross_attn.k_proj.weight: 0.000198
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.002032
+  image_cross_attn.v_proj.bias: 0.001931
+  image_cross_attn.out_proj.weight: 0.011941
+  image_cross_attn.out_proj.bias: 0.001463
+============================================================
+
+Loop 1 Epoch 5:  18%|███████████▌                                                    | 195/1081 [01:59<08:57,  1.65it/s]
+============================================================
+BATCH 5600 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni1', 'cashew']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni1', 'cashew']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 135.7137
+    cross_out norm after: 10.6467
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.639734
+  seg_loss: 3.805616
+  total: 4.445350
+
+[GRADIENTS]
+  image_adapter[0]: 0.043827
+  image_adapter[1]: 0.041222
+  image_adapter[2]: 0.042816
+  image_adapter[3]: 0.044212
+  image_adapter[4]: 0.042767
+  image_adapter[5]: 0.042845
+  image_cross_attn.q_proj.weight: 0.000456
+  image_cross_attn.q_proj.bias: 0.000038
+  image_cross_attn.k_proj.weight: 0.000161
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001265
+  image_cross_attn.v_proj.bias: 0.001219
+  image_cross_attn.out_proj.weight: 0.009330
+  image_cross_attn.out_proj.bias: 0.001190
+============================================================
+
+Loop 1 Epoch 5:  27%|█████████████████▍                                              | 295/1081 [03:00<08:00,  1.64it/s]
+============================================================
+BATCH 5700 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb3', 'pcb2']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb3', 'pcb2']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 133.8791
+    cross_out norm after: 9.7845
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.644419
+  seg_loss: 2.853871
+  total: 3.498291
+
+[GRADIENTS]
+  image_adapter[0]: 0.174581
+  image_adapter[1]: 0.171567
+  image_adapter[2]: 0.202923
+  image_adapter[3]: 0.210170
+  image_adapter[4]: 0.186490
+  image_adapter[5]: 0.171321
+  image_cross_attn.q_proj.weight: 0.005376
+  image_cross_attn.q_proj.bias: 0.000577
+  image_cross_attn.k_proj.weight: 0.001089
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.004935
+  image_cross_attn.v_proj.bias: 0.004135
+  image_cross_attn.out_proj.weight: 0.031295
+  image_cross_attn.out_proj.bias: 0.003725
+============================================================
+
+Loop 1 Epoch 5:  37%|███████████████████████▍                                        | 395/1081 [04:00<06:47,  1.68it/s]
+============================================================
+BATCH 5800 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['pcb3', 'macaroni1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['pcb3', 'macaroni1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 149.0932
+    cross_out norm after: 5.9919
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.575268
+  seg_loss: 0.000000
+  total: 0.575268
+
+[GRADIENTS]
+  image_adapter[0]: 0.035248
+  image_adapter[1]: 0.034908
+  image_adapter[2]: 0.040492
+  image_adapter[3]: 0.044633
+  image_adapter[4]: 0.038493
+  image_adapter[5]: 0.036766
+  image_cross_attn.q_proj.weight: 0.000588
+  image_cross_attn.q_proj.bias: 0.000047
+  image_cross_attn.k_proj.weight: 0.000060
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.000731
+  image_cross_attn.v_proj.bias: 0.000701
+  image_cross_attn.out_proj.weight: 0.005696
+  image_cross_attn.out_proj.bias: 0.000638
+============================================================
+
+Loop 1 Epoch 5:  46%|█████████████████████████████▎                                  | 495/1081 [05:00<05:57,  1.64it/s]
+============================================================
+BATCH 5900 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['fryum', 'pcb4']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['fryum', 'pcb4']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 143.7716
+    cross_out norm after: 7.8596
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.432660
+  seg_loss: 0.839449
+  total: 1.272109
+
+[GRADIENTS]
+  image_adapter[0]: 0.074184
+  image_adapter[1]: 0.069040
+  image_adapter[2]: 0.083228
+  image_adapter[3]: 0.095982
+  image_adapter[4]: 0.101002
+  image_adapter[5]: 0.108766
+  image_cross_attn.q_proj.weight: 0.001164
+  image_cross_attn.q_proj.bias: 0.000047
+  image_cross_attn.k_proj.weight: 0.000184
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001728
+  image_cross_attn.v_proj.bias: 0.001678
+  image_cross_attn.out_proj.weight: 0.014712
+  image_cross_attn.out_proj.bias: 0.001699
+============================================================
+
+Loop 1 Epoch 5:  55%|███████████████████████████████████▏                            | 595/1081 [06:01<04:55,  1.65it/s]
+============================================================
+BATCH 6000 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['candle', 'macaroni2']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['candle', 'macaroni2']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 151.2181
+    cross_out norm after: 7.1290
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.554203
+  seg_loss: 1.529942
+  total: 2.084145
+
+[GRADIENTS]
+  image_adapter[0]: 0.067848
+  image_adapter[1]: 0.070770
+  image_adapter[2]: 0.078252
+  image_adapter[3]: 0.083085
+  image_adapter[4]: 0.078936
+  image_adapter[5]: 0.071879
+  image_cross_attn.q_proj.weight: 0.001488
+  image_cross_attn.q_proj.bias: 0.000048
+  image_cross_attn.k_proj.weight: 0.000637
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001462
+  image_cross_attn.v_proj.bias: 0.001452
+  image_cross_attn.out_proj.weight: 0.013598
+  image_cross_attn.out_proj.bias: 0.001576
+============================================================
+
+Loop 1 Epoch 5:  64%|█████████████████████████████████████████▏                      | 695/1081 [07:01<03:55,  1.64it/s]
+============================================================
+BATCH 6100 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['candle', 'chewinggum']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['candle', 'chewinggum']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 157.6390
+    cross_out norm after: 9.3189
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.641415
+  seg_loss: 0.000003
+  total: 0.641418
+
+[GRADIENTS]
+  image_adapter[0]: 0.076838
+  image_adapter[1]: 0.068502
+  image_adapter[2]: 0.064633
+  image_adapter[3]: 0.063385
+  image_adapter[4]: 0.060331
+  image_adapter[5]: 0.055850
+  image_cross_attn.q_proj.weight: 0.000750
+  image_cross_attn.q_proj.bias: 0.000070
+  image_cross_attn.k_proj.weight: 0.000188
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001275
+  image_cross_attn.v_proj.bias: 0.001268
+  image_cross_attn.out_proj.weight: 0.010819
+  image_cross_attn.out_proj.bias: 0.001246
+============================================================
+
+Loop 1 Epoch 5:  74%|███████████████████████████████████████████████                 | 795/1081 [08:02<02:54,  1.64it/s]
+============================================================
+BATCH 6200 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['capsules', 'pcb1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['capsules', 'pcb1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 156.1350
+    cross_out norm after: 10.6227
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.821976
+  seg_loss: 0.000000
+  total: 0.821977
+
+[GRADIENTS]
+  image_adapter[0]: 0.093759
+  image_adapter[1]: 0.067619
+  image_adapter[2]: 0.073769
+  image_adapter[3]: 0.064387
+  image_adapter[4]: 0.062153
+  image_adapter[5]: 0.061581
+  image_cross_attn.q_proj.weight: 0.002911
+  image_cross_attn.q_proj.bias: 0.000224
+  image_cross_attn.k_proj.weight: 0.000450
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001610
+  image_cross_attn.v_proj.bias: 0.001424
+  image_cross_attn.out_proj.weight: 0.012656
+  image_cross_attn.out_proj.bias: 0.001358
+============================================================
+
+Loop 1 Epoch 5:  83%|████████████████████████████████████████████████████▉           | 895/1081 [09:02<01:52,  1.66it/s]
+============================================================
+BATCH 6300 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['cashew', 'capsules']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['cashew', 'capsules']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 159.5742
+    cross_out norm after: 9.5233
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.659244
+  seg_loss: 2.007567
+  total: 2.666811
+
+[GRADIENTS]
+  image_adapter[0]: 0.052137
+  image_adapter[1]: 0.036829
+  image_adapter[2]: 0.036635
+  image_adapter[3]: 0.036525
+  image_adapter[4]: 0.035091
+  image_adapter[5]: 0.033900
+  image_cross_attn.q_proj.weight: 0.000837
+  image_cross_attn.q_proj.bias: 0.000092
+  image_cross_attn.k_proj.weight: 0.000229
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.000782
+  image_cross_attn.v_proj.bias: 0.000787
+  image_cross_attn.out_proj.weight: 0.006236
+  image_cross_attn.out_proj.bias: 0.000653
+============================================================
+
+Loop 1 Epoch 5:  92%|██████████████████████████████████████████████████████████▉     | 995/1081 [10:03<00:51,  1.68it/s]
+============================================================
+BATCH 6400 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['macaroni2', 'macaroni2']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['macaroni2', 'macaroni2']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 150.6790
+    cross_out norm after: 8.8573
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.802991
+  seg_loss: 1.866903
+  total: 2.669894
+
+[GRADIENTS]
+  image_adapter[0]: 0.043391
+  image_adapter[1]: 0.042812
+  image_adapter[2]: 0.053297
+  image_adapter[3]: 0.053426
+  image_adapter[4]: 0.050301
+  image_adapter[5]: 0.048345
+  image_cross_attn.q_proj.weight: 0.001088
+  image_cross_attn.q_proj.bias: 0.000165
+  image_cross_attn.k_proj.weight: 0.000240
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.001419
+  image_cross_attn.v_proj.bias: 0.001189
+  image_cross_attn.out_proj.weight: 0.009711
+  image_cross_attn.out_proj.bias: 0.001029
+============================================================
+
+Loop 1 Epoch 5: 100%|███████████████████████████████████████████████████████████████| 1081/1081 [10:55<00:00,  1.65it/s]
+
+Loop 1 Epoch 5 Complete - Average Loss: 2.242647
+Checkpoint saved: ckpt/visa_cross_attn_feedback_fixed1219/loop_1_image_adapter.pth
+
+======================================================================
+LOOP 1 | EPOCH 6/19 - STAGE 2: IMAGE CROSS-ATTENTION
+======================================================================
+Loop 1 Epoch 6:   1%|▊                                                                | 14/1081 [00:09<10:56,  1.63it/s]
+============================================================
+BATCH 6500 DEBUG (Loop 1)
+============================================================
+  image: torch.Size([2, 3, 518, 518]), class_names: ['cashew', 'pcb1']
+
+[PREPARE TEXT CONTEXT for Stage 2]
+  class_names: ['cashew', 'pcb1']
+  text_context shape: torch.Size([2, 1232, 768])
+  text_context norm (per token): 1.0000
+
+[TEXT CONTEXT for Stage 2]
+  shape: torch.Size([2, 1232, 768])
+
+======================================================================
+IMAGE FORWARD (Stage 2 with Cross-Attention)
+======================================================================
+[INPUT] x shape: torch.Size([2, 3, 518, 518])
+[CONFIG] use_cross_attention: True
+[CONFIG] text_context available: True
+
+>>> STAGE 2 CROSS-ATTENTION (image→text) <<<
+    Scaling factor: 0.1
+
+============================================================
+IMAGE CROSS-ATTENTION MODULE DEBUG (Stage 2)
+============================================================
+[INPUT] image_features shape: torch.Size([2, 1370, 1024])
+[INPUT] text_context shape: torch.Size([2, 1232, 768])
+[CONFIG] num_heads: 8, head_dim: 96
+[PROJECTION] Q: torch.Size([2, 1370, 768]), K: torch.Size([2, 1232, 768]), V: torch.Size([2, 1232, 768])
+[ATTENTION] attn_weights shape: torch.Size([2, 8, 1370, 1232])
+[OUTPUT] shape: torch.Size([2, 1370, 1024])
+============================================================
+
+    cross_out norm before: 153.6825
+    cross_out norm after: 8.8785
+>>> CROSS-ATTENTION COMPLETE <<<
+
+[OUTPUT] seg_tokens: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+[OUTPUT] det_token: torch.Size([2, 768])
+======================================================================
+
+
+[IMAGE FEATURES]
+  patch_features: [torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768]), torch.Size([2, 1369, 768])]
+  det_feature: torch.Size([2, 768])
+
+[LOSS]
+  cls_loss: 0.672780
+  seg_loss: 1.163907
+  total: 1.836686
+
+[GRADIENTS]
+  image_adapter[0]: 0.200156
+  image_adapter[1]: 0.160202
+  image_adapter[2]: 0.165673
+  image_adapter[3]: 0.160058
+  image_adapter[4]: 0.150045
+  image_adapter[5]: 0.147293
+  image_cross_attn.q_proj.weight: 0.008869
+  image_cross_attn.q_proj.bias: 0.000526
+  image_cross_attn.k_proj.weight: 0.001541
+  image_cross_attn.k_proj.bias: 0.000000
+  image_cross_attn.v_proj.weight: 0.004926
+  image_cross_attn.v_proj.bias: 0.003023
+  image_cross_attn.out_proj.weight: 0.029042
+  image_cross_attn.out_proj.bias: 0.002446
