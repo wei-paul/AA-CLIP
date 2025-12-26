@@ -408,11 +408,16 @@ def train_text_adapter_with_cross_attention(
                 )
 
             # Calculate loss
+            # FIX: Accumulate loss across all 4 feature scales (was overwriting instead of accumulating)
+            # This ensures text embeddings are optimized for all scales [6, 12, 18, 24], not just layer 24
+            loss = 0.0
             for f in patch_features:
                 patch_preds = calculate_similarity_map(f, epoch_text_feature, img_size)
-                loss = calculate_seg_loss(patch_preds, mask)
-                orthogonal_loss = ((epoch_text_feature[:, :, 0] * epoch_text_feature[:, :, 1]).sum(1).mean()) ** 2
-                loss += orthogonal_loss * text_norm_weight
+                loss += calculate_seg_loss(patch_preds, mask)
+
+            # Orthogonal loss: computed once outside loop (doesn't depend on patch features)
+            orthogonal_loss = ((epoch_text_feature[:, :, 0] * epoch_text_feature[:, :, 1]).sum(1).mean()) ** 2
+            loss += orthogonal_loss * text_norm_weight
 
             if debug_this_batch:
                 print(f"\n[LOSS] total: {loss.item():.6f}")
